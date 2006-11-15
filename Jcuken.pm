@@ -6,6 +6,7 @@
 # under the same terms as Perl itself.
 
 # History:
+#  1.02  2006/11/15 Fixed problem with undefined encoding in qwe2jcu
 #  1.01  2006/11/15 Initial revision
 
 =head1 NAME
@@ -41,7 +42,7 @@ our @EXPORT_OK   = qw/ jcu2qwe qwe2jcu /;
 our %EXPORT_TAGS = qw / /;
 our @ISA = qw/Exporter/;
 
-our $VERSION = "1.01";
+our $VERSION = "1.02";
 
 my $table = q!1 1
 q é
@@ -156,7 +157,9 @@ sub qwe2jcu {
   if ($enc) {
     my $converter = Text::Iconv->new($enc, "windows-1251");
     $val = $converter->convert($val);
-  } # else think of windows-1251
+  } else { # think of windows-1251
+    $enc = 'windows-1251';
+  }
   $converter = Text::Iconv->new("windows-1251", $enc);
   my $res = '';
   foreach (split //, $val) {

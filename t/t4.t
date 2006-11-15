@@ -2,10 +2,11 @@
 
 use strict;
 use Test;
+
 BEGIN { plan tests => 1 }
 
 use Lingua::RU::Jcuken;
 
-ok(1);
+ok(Lingua::RU::Jcuken::jcu2qwe('йцукен'), 'qwerty');
 
 exit;
