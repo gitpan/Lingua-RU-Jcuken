@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Lingua-RU-Jcuken
-version:             1.02
+version:             1.03
 abstract:            Convert between QWERTY/JCUKEN
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31
